@@ -430,3 +430,5 @@ fabric.properties
 *.vscode
 .vscode/
 Properties/
+tests/HotelApi.Tests/coverage.json
+tests/HotelApi.Tests/lcov.info
