@@ -11,6 +11,8 @@ The solution is divided in 5 projects:
  - HotelApi.Domain
  - HotelApi.Tests
 
+When running the project, the swagger page is opened showing all the available endpoints.
+
 ## Database
 
 By default, the project is configured to store data only in memory. If the project is stopped and restarted all data is lost. But it is possible to run it with MongoDB.
