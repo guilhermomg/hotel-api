@@ -10,6 +10,7 @@ using HotelApi.Domain.Entities.Notifications.Interfaces;
 using HotelApi.Service.Bookings.Services.Interfaces;
 using HotelApi.Service.Bookings.Dto;
 using HotelApi.Domain.Entities.Bookings;
+using HotelApi.App.ViewModels.Requests;
 
 namespace HotelApi.Api.Controllers
 {
@@ -42,7 +43,7 @@ namespace HotelApi.Api.Controllers
 
         [HttpGet("availability")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<DaysAvailabilityDto>> CheckAvailability([FromQuery] CreateBookingRequest request) =>
+        public async Task<ActionResult<DaysAvailabilityDto>> CheckAvailability([FromQuery] CheckAvailabilityRequest request) =>
             CustomResponse(
                 await _checkAvailabilityService.CheckAvailability(request.DateFrom, request.DateTo)
             );
