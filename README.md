@@ -5,11 +5,11 @@ The booking API for the very last hotel in Cancun.
 
 The solution is divided in 5 projects:
 
- - HotelApi.App - The main project
- - HotelApi.Service
- - HotelApi.Infra
- - HotelApi.Domain
- - HotelApi.Tests
+ - [HotelApi.App](https://github.com/guilhermomg/hotel-api/tree/main/src/HotelApi.App) - The main project
+ - [HotelApi.Service](https://github.com/guilhermomg/hotel-api/tree/main/src/HotelApi.Service)
+ - [HotelApi.Infra](https://github.com/guilhermomg/hotel-api/tree/main/src/HotelApi.Infra)
+ - [HotelApi.Domain](https://github.com/guilhermomg/hotel-api/tree/main/src/HotelApi.Domain)
+ - [HotelApi.Tests](https://github.com/guilhermomg/hotel-api/tree/main/tests/HotelApi.Tests)
 
 When running the project, the swagger page is opened showing all the available endpoints.
 
