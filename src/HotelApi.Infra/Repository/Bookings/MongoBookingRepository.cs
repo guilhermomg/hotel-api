@@ -23,14 +23,15 @@ namespace HotelApi.Infra.Repository.Bookings
             return booking;
         }
 
-        public Task<bool> Delete(Guid uid)
+        public async Task<bool> Delete(Guid uid)
         {
-            throw new NotImplementedException();
+            var result = await _context.BookingsCollection.DeleteOneAsync(b => b.Uid == uid);
+            return result.DeletedCount > 0;
         }
 
-        public Task<Booking> GetByUid(Guid uid)
+        public async Task<Booking> GetByUid(Guid uid)
         {
-            throw new NotImplementedException();
+            return await _context.BookingsCollection.Find(b => b.Uid == uid).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Booking>> IntersectsInInterval(DateTime from, DateTime to, Guid? ignoreId = null)
@@ -41,9 +42,17 @@ namespace HotelApi.Infra.Repository.Bookings
             ).ToListAsync();
         }
 
-        public Task<Booking> Update(Booking booking)
+        public async Task<Booking> Update(Booking booking)
         {
-            throw new NotImplementedException();
+            var updateDefinition = Builders<Booking>.Update
+                .Set(updateBooking => updateBooking.DateFrom, booking.DateFrom)
+                .Set(updateBooking => updateBooking.DateTo, booking.DateTo)
+                .Set(updateBooking => updateBooking.LastUpdateAt, DateTime.Now)
+                .Set(updateBooking => updateBooking.Client, booking.Client);
+
+            return await _context.BookingsCollection.FindOneAndUpdateAsync<Booking>(
+                updateBooking => updateBooking.Uid == booking.Uid, updateDefinition
+            );
         }
     }
 }
